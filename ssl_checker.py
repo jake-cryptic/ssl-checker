@@ -10,7 +10,7 @@ from csv import DictWriter
 
 try:
     from OpenSSL import SSL
-    from json2html import *
+    from json2html import convert as convertj2h
 except ImportError:
     print('Please install required modules: pip install -r requirements.txt')
     sys.exit(1)
@@ -300,7 +300,7 @@ class SSLChecker:
 
     def export_html(self, context):
         """Export JSON to HTML."""
-        html = json2html.convert(json=context)
+        html = convertj2h(json=context)
         file_name = datetime.strftime(datetime.now(), '%Y_%m_%d_%H_%M_%S')
         with open('{}.html'.format(file_name), 'w') as html_file:
             html_file.write(html)
